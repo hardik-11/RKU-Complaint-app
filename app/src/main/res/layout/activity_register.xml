@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/LoginHeaderImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/signupheader" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/SignUp_EditBox_FullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/inputbox"
+                android:hint="Name"
+                android:drawableLeft="@drawable/bx_user"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:drawablePadding="15dp"/>
+
+            <EditText
+                android:id="@+id/SignUp_EditBox_Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/inputbox"
+                android:hint="Email Address"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:drawableLeft="@drawable/bx_email"
+                android:drawablePadding="15dp"/>
+
+            <EditText
+                android:id="@+id/SignUp_EditBox_Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/inputbox"
+                android:drawableLeft="@drawable/bxs_lock"
+                android:drawablePadding="15dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/SignUp_EditBox_Re_Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:background="@drawable/inputbox"
+                android:hint="Re-Password"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:drawableLeft="@drawable/bxs_lock"
+                android:drawablePadding="15dp" />
+
+            <LinearLayout
+                android:id="@+id/SignUp_Button_Register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/submitbtn"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/save" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:text="Register" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/AlreadyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account?"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp" />
+
+            <TextView
+                android:id="@+id/SignUp_Link_Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/linkColor"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

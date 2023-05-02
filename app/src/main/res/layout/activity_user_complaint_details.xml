@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserComplaintDetails">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical"
+            android:background="@drawable/header">
+
+            <TextView
+                android:id="@+id/UserComp_details_Text_HeaderTitle"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="Academic Complaint"
+                android:textSize="28dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-100dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/complaintbody"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="25dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/UserCompdetailsTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Lecturer issues"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/UserCompStatusImage"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/success" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/UserCompdetailsDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="2023-05-20"
+                            android:textSize="18sp" />
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/UserCompdetailsDescription"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/complaint_description"
+                                    android:textAlignment="textStart"
+                                    android:textSize="18sp" />
+
+                            </LinearLayout>
+
+                        </ScrollView>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ButtonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="-50dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnCancelComplaint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Cancel"
+                        android:backgroundTint="@color/RKUColor"
+                        android:layout_marginHorizontal="10dp"
+                        android:textSize="20sp" />
+
+
+                    <Button
+                        android:id="@+id/btnSuccessComplaint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Success"
+                        android:backgroundTint="@color/success"
+                        android:layout_marginHorizontal="10dp"
+                        android:textSize="20sp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/FeedBackLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="-40dp">
+
+                <TextView
+                    android:id="@+id/UserComp_details_Text_FeedbackFirst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Give Your"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp" />
+
+                <TextView
+                    android:id="@+id/UserCompdetailsButtonFeedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feedback"
+                    android:textColor="@color/primaryLight"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/NotApprovedLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="-40dp">
+
+
+
+                <TextView
+                    android:id="@+id/UserCompNOtApproved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Approved"
+                    android:textColor="@color/RKUColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
