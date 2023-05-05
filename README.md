@@ -27,7 +27,7 @@ Clone the repository
     
 Open the project in Android Studio
 
-Build and run the app on your emulator or device
+Build and run the app on your device
 
 ## Support
 
