@@ -1,7 +1,3 @@
-
-![Logo](https://github.com/hardik-11/RKU-Complaint-app/blob/master/app/src/main/res/drawable/logo.png?raw=true)
-
-
 # Complaint App for Android
 
 This is an Android application that allows users to file complaints and report issues to the appropriate authorities. Users can easily create a complaint, add relevant details and submit it to the system. This app is designed to simplify the process of reporting issues and improve communication between citizens and authorities.
