@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/hardik-11/RKU-Complaint-app/blob/master/app/src/main/res/drawable/complaint%20logo.png?raw=true)
+![Logo](https://github.com/hardik-11/RKU-Complaint-app/blob/master/app/src/main/res/drawable/logo.png?raw=true)
 
 
 # Complaint App for Android
