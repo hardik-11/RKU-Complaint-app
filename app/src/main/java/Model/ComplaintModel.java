@@ -1,4 +1,4 @@
-package com.example.rkuc;
+package Model;
 
 public class ComplaintModel {
 
@@ -8,19 +8,25 @@ public class ComplaintModel {
     String date;
     String documentid;
     String email;
+    String feedbackDate;
+    String feedbackDeitail;
+    String feedbackTitle;
     String status;
     String userid;
 
     public ComplaintModel() {
     }
 
-    public ComplaintModel(String complaintDescription, String complaintTitle, String complaintType, String date, String documentid, String email, String status, String userid) {
+    public ComplaintModel(String complaintDescription, String complaintTitle, String complaintType, String date, String documentid, String email, String feedbackDate, String feedbackDeitail, String feedbackTitle, String status, String userid) {
         this.complaintDescription = complaintDescription;
         this.complaintTitle = complaintTitle;
         this.complaintType = complaintType;
         this.date = date;
         this.documentid = documentid;
         this.email = email;
+        this.feedbackDate = feedbackDate;
+        this.feedbackDeitail = feedbackDeitail;
+        this.feedbackTitle = feedbackTitle;
         this.status = status;
         this.userid = userid;
     }
@@ -71,6 +77,30 @@ public class ComplaintModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFeedbackDate() {
+        return feedbackDate;
+    }
+
+    public void setFeedbackDate(String feedbackDate) {
+        this.feedbackDate = feedbackDate;
+    }
+
+    public String getFeedbackDeitail() {
+        return feedbackDeitail;
+    }
+
+    public void setFeedbackDeitail(String feedbackDeitail) {
+        this.feedbackDeitail = feedbackDeitail;
+    }
+
+    public String getFeedbackTitle() {
+        return feedbackTitle;
+    }
+
+    public void setFeedbackTitle(String feedbackTitle) {
+        this.feedbackTitle = feedbackTitle;
     }
 
     public String getStatus() {

@@ -1,4 +1,4 @@
-package com.example.rkuc;
+package Model;
 
 
 public class UserModel {

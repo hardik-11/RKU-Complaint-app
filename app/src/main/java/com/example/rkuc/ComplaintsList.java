@@ -3,7 +3,6 @@ package com.example.rkuc;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
+import Model.ComplaintModel;
+
 public class ComplaintsList extends AppCompatActivity {
     ActivityComplaintsListBinding binding;
     RecyclerView ComplaintsRviev;
@@ -48,8 +49,7 @@ public class ComplaintsList extends AppCompatActivity {
         String Status = intent.getStringExtra("Status");
 
         binding.ComplaintListTitle.setText(Status + " Compalints");
-
-
+        String UserType = getIntent().getStringExtra("UserType");
         //
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -67,7 +67,10 @@ public class ComplaintsList extends AppCompatActivity {
             query = firebaseFirestore.collection("Complaints").whereEqualTo("status", "Pending").orderBy("date", Query.Direction.DESCENDING);
         } else if (Status.equals("Cancel")) {
             query = firebaseFirestore.collection("Complaints").whereEqualTo("status", "Cancel").orderBy("date", Query.Direction.DESCENDING);
-        } else if (Status.equals("User")) {
+        }else if(Status.equals("Admin")){
+            query = firebaseFirestore.collection("Complaints").orderBy("date", Query.Direction.DESCENDING);
+        }
+        else if (Status.equals("User")) {
 
             String UserId = firebaseAuth.getCurrentUser().getUid();
             documentReference = firebaseFirestore.collection("Users").document(UserId);
@@ -92,10 +95,7 @@ public class ComplaintsList extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(ComplaintViewHolder holder, int position, ComplaintModel model) {
                 holder.bind(model);
-//                holder.Subject.setText(model.getComplaintTitle());
-//                holder.Desc.setText(model.getComplaintDescription());
-//                holder.Email.setText(model.getEmail());
-//                holder.Uid.setText(model.getUserid());
+
                 holder.ArrowCard.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -108,6 +108,7 @@ public class ComplaintsList extends AppCompatActivity {
                         UserComplaintDetailIntent.putExtra("Email", model.getEmail());
                         UserComplaintDetailIntent.putExtra("Status", model.getStatus());
                         UserComplaintDetailIntent.putExtra("Userid", model.getUserid());
+                        UserComplaintDetailIntent.putExtra("UserType",UserType);
                         v.getContext().startActivity(UserComplaintDetailIntent);
                     }
                 });
@@ -137,10 +138,6 @@ public class ComplaintsList extends AppCompatActivity {
             super(itemView);
             Type = itemView.findViewById(R.id.ComplaintType);
             Date = itemView.findViewById(R.id.Date);
-            //Subject = itemView.findViewById(R.id.ComplaintSubject);
-//            Desc = itemView.findViewById(R.id.ComplaintDesc);
-//            Uid = itemView.findViewById(R.id.Uid);
-//            Email = itemView.findViewById(R.id.email);
             ArrowCard = itemView.findViewById(R.id.imageViewArrow);
 
 
@@ -149,10 +146,7 @@ public class ComplaintsList extends AppCompatActivity {
         public void bind(ComplaintModel complaintModel) {
             Type.setText(complaintModel.getComplaintType() + " Complaint");
             Date.setText(complaintModel.getDate());
-//            Subject.setText(complaintModel.getComplaintTitle());
-//            Desc.setText(complaintModel.getComplaintDescription());
-//            Email.setText(complaintModel.getEmail());
-//            Uid.setText(complaintModel.getUserid());
+
 
 
         }

@@ -1,6 +1,7 @@
 package com.example.rkuc;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 import com.example.rkuc.databinding.ActivityMainBinding;
 import com.example.rkuc.databinding.ActivityMenuBarActivtyBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,12 +21,21 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
+    FirebaseFirestore firebaseFirestore;
+    DocumentReference documentReference;
+    String UserId;
+    int Usertype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
 
         binding.ButtonLogin.setOnClickListener(new View.OnClickListener() {
@@ -64,18 +77,18 @@ public class MainActivity extends AppCompatActivity {
                                         int UserType = snapshot.getValue(Integer.class);
                                         // Call Change Activity Intent Object
                                         Intent MenubarIntent = new Intent(MainActivity.this, MenuBarActivty.class);
-                                        Intent DesboardIntent = new Intent(MainActivity.this, DashboardActivity.class);
+
                                         if (UserType == 0) {
 
                                             // Send Data In User Side
-
+                                            MenubarIntent.putExtra("UserType","0");
                                             startActivity(MenubarIntent);
                                             loadingBar.cancel();
                                         } else if (UserType == 1) {
 
                                             // Send Data In Admin Side
-
-                                            startActivity(DesboardIntent);
+                                            MenubarIntent.putExtra("UserType","1");
+                                            startActivity(MenubarIntent);
                                             loadingBar.cancel();
                                         }
                                     }
@@ -103,6 +116,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.ForgotPassword.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent ResetPasswordIntent = new Intent(MainActivity.this,ChangePasswordActivity.class);
+        startActivity(ResetPasswordIntent);
+    }
+});
         binding.SignInLinkRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

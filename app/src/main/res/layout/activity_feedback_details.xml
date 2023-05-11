@@ -54,7 +54,7 @@
 
 
                     <TextView
-                        android:id="@+id/AdminFeedBack_TextView_FeedBackTitle"
+                        android:id="@+id/TextView_FeedBackTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Lecturer issues"
@@ -63,7 +63,7 @@
 
 
                     <TextView
-                        android:id="@+id/AdminFeedBack_TextView_FeedBackDateTime"
+                        android:id="@+id/TextView_FeedBackDateTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -83,7 +83,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/AdminFeedBack_TextView_FeedBackDescription"
+                                android:id="@+id/TextView_FeedBackDescription"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/complaint_description"

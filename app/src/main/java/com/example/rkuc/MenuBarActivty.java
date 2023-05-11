@@ -19,50 +19,86 @@ public class MenuBarActivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMenuBarActivtyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+String UserType = getIntent().getStringExtra("UserType");
+       if (UserType.equals("1")){
+            String[] menuName = { "Dashboard", "Complaints", "Feedbacks", "New Admin", "Settings"};
 
-        String[] menuName = {"New Complaint", "Dashboard", "Complaints", "Feedbacks", "New Admin", "Settings"};
-        int[] menuImage = {R.drawable.bx_home, R.drawable.bxs_dashboard, R.drawable.book_reader_solid, R.drawable.bxs_message_dots, R.drawable.user_plus_solid, R.drawable.settings_icon};
+            int[] menuImage = { R.drawable.bxs_dashboard, R.drawable.book_reader_solid, R.drawable.bxs_message_dots, R.drawable.user_plus_solid, R.drawable.settings_icon};
 
-        MenuBarAdapter menuAdapter = new MenuBarAdapter(MenuBarActivty.this, menuName, menuImage);
-        binding.gridMenu.setAdapter(menuAdapter);
+            MenuBarAdapter menuAdapter = new MenuBarAdapter(MenuBarActivty.this, menuName, menuImage);
+            binding.gridMenu.setAdapter(menuAdapter);
 
 
-        binding.gridMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            binding.gridMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                switch (position) {
-                    case 0:
-                        startActivity(new Intent(MenuBarActivty.this, HomeActivity.class));
-                        break;
+                    switch (position) {
 
-                    case 1:
-                        startActivity(new Intent(MenuBarActivty.this, DashboardActivity.class));
-                        break;
 
-                    case 2:
-                        Intent ComplaintListIntent = new Intent(MenuBarActivty.this, ComplaintsList.class);
-                        ComplaintListIntent.putExtra("Status", "User");
-                        startActivity(ComplaintListIntent);
-                        break;
+                        case 0:
+                            startActivity(new Intent(MenuBarActivty.this, DashboardActivity.class));
+                            break;
 
-                    case 3:
-                        startActivity(new Intent(MenuBarActivty.this, FeedBackList.class));
-                        break;
+                        case 1:
+                            Intent ComplaintListIntent = new Intent(MenuBarActivty.this, ComplaintsList.class);
+                            ComplaintListIntent.putExtra("Status", "Admin");
+                            startActivity(ComplaintListIntent);
+                            break;
 
-                    case 4:
-                        startActivity(new Intent(MenuBarActivty.this, NewAdminActivity.class));
-                        break;
+                        case 2:
+                            startActivity(new Intent(MenuBarActivty.this, FeedBackList.class));
+                            break;
 
-                    case 5:
-                        startActivity(new Intent(MenuBarActivty.this, SettingsActivity.class));
-                        break;
+                        case 3:
+                            startActivity(new Intent(MenuBarActivty.this, NewAdminActivity.class));
+                            break;
 
-                    default:
-                        Toast.makeText(MenuBarActivty.this, "Error", Toast.LENGTH_SHORT).show();
-                        break;
+                        case 4:
+                            startActivity(new Intent(MenuBarActivty.this, SettingsActivity.class));
+                            break;
+
+                        default:
+                            Toast.makeText(MenuBarActivty.this, "Error", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
                 }
-            }
-        });
+            });
+        }else{
+           String[] menuName = {"New Complaint",  "Complaints", "Settings"};
+
+           int[] menuImage = {R.drawable.bx_home,  R.drawable.book_reader_solid,  R.drawable.settings_icon};
+
+           MenuBarAdapter menuAdapter = new MenuBarAdapter(MenuBarActivty.this, menuName, menuImage);
+           binding.gridMenu.setAdapter(menuAdapter);
+
+
+           binding.gridMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                   switch (position) {
+                       case 0:
+                           startActivity(new Intent(MenuBarActivty.this, HomeActivity.class));
+                           break;
+
+                       case 1:
+                           Intent ComplaintListIntent = new Intent(MenuBarActivty.this, ComplaintsList.class);
+                           ComplaintListIntent.putExtra("Status", "User");
+                           startActivity(ComplaintListIntent);
+                           break;
+
+                       case 2:
+                           startActivity(new Intent(MenuBarActivty.this, SettingsActivity.class));
+                           break;
+
+                       default:
+                           Toast.makeText(MenuBarActivty.this, "Error", Toast.LENGTH_SHORT).show();
+                           break;
+                   }
+               }
+           });
+
+       }
     }
 }

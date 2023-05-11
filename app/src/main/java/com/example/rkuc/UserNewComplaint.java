@@ -1,15 +1,16 @@
 package com.example.rkuc;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.rkuc.databinding.ActivityUserNewComplaintBinding;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -22,6 +23,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
+
+import Model.ComplaintModel;
 
 public class UserNewComplaint extends AppCompatActivity {
 
@@ -86,19 +89,26 @@ public class UserNewComplaint extends AppCompatActivity {
 
 
                     DocID = firebaseFirestore.collection("Complaint").document().getId();
-                    ComplaintModel complain = new ComplaintModel(ComplainDescription, ComplainTitle, ComplainType, Date,DocID, Email, "Pending", UserId);
+                    ComplaintModel complain = new ComplaintModel(ComplainDescription, ComplainTitle, ComplainType, Date, DocID, Email, null, null, null, "Pending", UserId);
 
-                    firebaseFirestore.collection("Complaints").document(DocID).set(complain).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
+                    firebaseFirestore.collection("Complaints").document(DocID).set(complain)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
 
-                            Log.d("Document id","---------------------------------------"+DocID);
-                        }
-                    });
-                    Toast.makeText(UserNewComplaint.this, "Complaint Registered Successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(UserNewComplaint.this, "Complaint Registered Successfully", Toast.LENGTH_SHORT).show();
 
-                    Intent SidebarIntent = new Intent(UserNewComplaint.this, MenuBarActivty.class);
-                    startActivity(SidebarIntent);
+                                    Intent SidebarIntent = new Intent(UserNewComplaint.this, MenuBarActivty.class);
+                                    startActivity(SidebarIntent);
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(UserNewComplaint.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
 
                 }
             }

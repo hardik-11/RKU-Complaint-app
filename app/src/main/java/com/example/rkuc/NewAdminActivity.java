@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import Model.UserModel;
+
 public class NewAdminActivity extends AppCompatActivity {
     ActivityNewAdminBinding binding;
     FirebaseAuth firebaseAuth;

@@ -10,11 +10,14 @@ import android.widget.Toast;
 
 import com.example.rkuc.databinding.ActivityRegisterBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import Model.UserModel;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -80,7 +83,13 @@ public class RegisterActivity extends AppCompatActivity {
                                 loadingBar.cancel();
                             }
                         }
-                    });
+                    })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
 
 
