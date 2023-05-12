@@ -28,7 +28,9 @@ Clone the repository
 
 Open the project in Android Studio
 
-Build and run the app on your device
+Connect With Firebase Databse And Firebase Firestore
+
+Run the app on your device
 
 
 ## Credits for Complaint App:
